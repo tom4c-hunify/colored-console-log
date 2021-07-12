@@ -5,7 +5,7 @@ from .extras import ColorMethod
 from .handler import ColoredStreamHandler
 
 
-def set_root_logger(level: int, format: str = "%(levelname)s - %(message)s",
+def set_root_logger(level: int, fmt: str = "%(levelname)s - %(message)s",
                     color_mode: ColorMethod = ColorMethod.LEVEL):
     r = logging.root
     r.setLevel(level)
@@ -13,6 +13,6 @@ def set_root_logger(level: int, format: str = "%(levelname)s - %(message)s",
         r.removeHandler(h)
     c_handler = ColoredStreamHandler(sys.stdout, color_mode)
     c_handler.setLevel(level)
-    basic_format = logging.Formatter(format)
+    basic_format = logging.Formatter(fmt)
     c_handler.setFormatter(basic_format)
     r.addHandler(c_handler)
