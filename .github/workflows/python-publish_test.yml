@@ -26,7 +26,7 @@ jobs:
     - name: Install dependencies
       run: |
         # Setting up environment
-        pip install twine
+        # pip install twine
         pip install wheel
         pip install --upgrade pip
         pip install check-wheel-contents
@@ -35,6 +35,7 @@ jobs:
     - name: Publish package
       uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
       with:
-        repository: https://testpypi.python.org/legacy/
+        repository_url: https://testpypi.python.org/legacy/
         user: __token__
-        password: ${{ secrets.PYPI_API_TOKEN }}
+        password: ${{ secrets.TEST_API_TOKEN }}
+        skip_existing: true
