@@ -1,7 +1,7 @@
 import logging
 
-from ColoredStreamHandler import utils as lutils
-from ColoredStreamHandler.extras import ColorMethod
+from cclogs import utils as lutils
+from cclogs.extras import ColorMethod
 
 lutils.set_root_logger(logging.NOTSET)
 logging.log(0, "notset")
