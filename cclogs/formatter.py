@@ -1,4 +1,5 @@
 import logging
+import sys
 from logging import LogRecord
 
 from .extras import ColorMethod, default_colors, TerminalColors
@@ -13,7 +14,13 @@ _styles = {
 class ColorFormatter(logging.Formatter):
 
     def __init__(self, fmt=None, color_mode: ColorMethod = ColorMethod.LEVEL, datefmt=None, style='%', validate=True):
-        super().__init__(fmt, datefmt, style, validate)
+        if sys.version_info[0] == 3:
+            if sys.version_info[1] < 8:
+                super().__init__(fmt, datefmt, style)
+            else:
+                super().__init__(fmt, datefmt, style, validate)
+        else:
+            raise RuntimeError("Requires python 3.6 or higher")
         self._color_mode = color_mode
         self._colors = default_colors
         self._level_str = _styles[style][0]

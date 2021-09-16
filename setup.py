@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="cclogs",
-    version="1.0.3",
+    version="1.0.4",
     author="Peter Tomek",
     author_email="tomek@hunifylabs.com",
     description="Colored console logs",
